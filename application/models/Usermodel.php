@@ -27,10 +27,16 @@ class Usermodel extends CI_Model
 			$query=$this->db->get('user');
 			return $query->result_array();
 		}
-		 public function get_guestdetails($user_id)
+		public function get_guestdetails($user_id)
 		{
 			$this->db->where('id',$user_id);
 			$query=$this->db->get('user');
+			return $query->result_array();
+		}
+		public function get_guestmaildetails($guset_id)
+		{
+			$this->db->where('guest_id',$guset_id);
+			$query=$this->db->get('guest');
 			return $query->result_array();
 		}
 		public function get_guests($user_id)
@@ -39,18 +45,17 @@ class Usermodel extends CI_Model
 			$query=$this->db->get('guest');
 			return $query->result_array();
 		}
-		public function get_usersid($firstName,$lastName,$email)
+		public function get_usersid($email)
 		{
-			$query = $this->db->query("Select id from user where firstName='$firstName' AND lastName='$lastName' AND email='$email'
+			$query = $this->db->query("Select id from user where email='$email'
                                        ");      
             $result = $query->row()->id;
 			return $result;
 		}
 	
-	    function is_exist($firstName,$lastName,$email)
+	    function is_exist($email)
 	    {
-		    $query = $this->db->query("Select firstName,lastName,email from user where firstName='$firstName' AND lastName='$lastName' AND email='$email'
-                                       ");      
+		    $query = $this->db->query("Select email from user where email='$email'");      
             $result = $query->result_array();
             if($query->num_rows()>0){
 				return "true";

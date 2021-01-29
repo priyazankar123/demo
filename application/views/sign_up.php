@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>/assets/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>/assets/css/main.css">
+	<link rel="stylesheet"  id="size-stylesheet"  href="<?php echo base_url();?>/assets/css/mobile.css">
+	
 	<script src="<?php echo base_url();?>/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 	<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -30,7 +32,7 @@
 					<h4>Bon Secours Training Center, 2401 W Lelgh St, Richmond, VA 23220</h4>
 					<h4 class="text-center"><strong>2018 Redskins Training Camp</strong></h4>
 					<div class="registration_form">
-						<form name="registration" method="post" class="clearfix" action="<?php echo base_url('welcome/insert_data');?>" novalidate="novalidate" enctype="multipart/form-data">
+						<form name="registration" method="post" class="clearfix" action="<?php echo base_url('index.php/welcome/insert_data');?>" novalidate="novalidate" enctype="multipart/form-data">
 							<div class="input-field clearfix">
 								<div class="col-md-6">
 									<input type="text" id="registration_primaryGuest_firstName" name="firstName" required="required" placeholder="First Name" onKeyPress="return onlyChars(event);"  class="form-control form-control"> </div>
@@ -45,8 +47,9 @@
 							</div>
 							<div class="input-field clearfix">
 								<div class="col-md-6">
-									<select id="registration_noOfGuests" name="noOfGuests" placeholder="No. of Guests" class="form-control form-control">
+									<select id="registration_noOfGuests" name="noOfGuests" placeholder="No. of Guests" class="form-control form-control" required>
 										<option value="">No. of Guests</option>
+										<option value="0">0</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -176,5 +179,25 @@ function onlyNumbers(evt)
     return true;
 
 }</script>
+<script>
+function adjustStyle(width) {
+  width = parseInt(width);
+  if (width < 701) {
+    $("#size-stylesheet").attr("href", "assets/css/mobile.css");
+	
+	
+  } else {
+     $("#size-stylesheet").attr("href", "assets/css/main.css"); 
+  }
+}
+
+$(function() {
+  adjustStyle($(this).width());
+  $(window).resize(function() {
+    adjustStyle($(this).width());
+  });
+});
+</script>
+
 
 </html>

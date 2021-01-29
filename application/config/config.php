@@ -22,7 +22,7 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/test_proj/';
+$config['base_url'] = 'http://34.86.185.246/candidate325/demo/';
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ $config['base_url'] = 'http://localhost/test_proj/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

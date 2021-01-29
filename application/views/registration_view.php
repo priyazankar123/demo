@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/normalize.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/main.css">
+<link rel="stylesheet"  id="size-stylesheet"  href="<?php echo base_url();?>/assets/css/mobile.css">
+	
 <script src="<?php echo base_url();?>/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
 <!--[if lt IE 9]>
@@ -34,7 +36,7 @@
 <h4>Bon Secours Training Center, 2401 W Lelgh St, Richmond, VA 23220</h4>
 <h4 class="text-center"><strong>2018 Redskins Training Camp</strong></h4>
 <div class="registration_form">
-<form name="registration" method="post" class="clearfix" action="<?php echo base_url('welcome/save_guestofsameuser');?>" novalidate="novalidate">
+<form name="registration" method="post" class="clearfix" action="<?php echo base_url('index.php/welcome/save_guestofsameuser');?>" novalidate="novalidate">
 <div class="hide">
 <div class="form-group">
 <?php $i = 0; ?>
@@ -162,5 +164,23 @@ Invite your friends and family to the Redskins Training Camp. You are not requir
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.js"></script>
 
 <script src="<?php echo base_url();?>/assets/js/scripts.js"></script>
+<script>
+function adjustStyle(width) {
+  width = parseInt(width);
+  if (width < 701) {
+    $("#size-stylesheet").attr("href", "assets/css/mobile.css");
+	
+	
+  } else {
+     $("#size-stylesheet").attr("href", "assets/css/main.css"); 
+  }
+}
 
+$(function() {
+  adjustStyle($(this).width());
+  $(window).resize(function() {
+    adjustStyle($(this).width());
+  });
+});
+</script>
 </body></html>
